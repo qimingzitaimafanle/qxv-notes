@@ -1,11 +1,12 @@
 [
   {
     "Author": "qx",
-    "Name": "qx-qxv",
+    "Name": "I-Ching-GL-Clean",
     "Punchline": "Personal notes app.",
     "Description": "Personal notes app.",
-    "InternalName": "qx-qxv",
-    "AssemblyVersion": "1.0.0.0",
+    "InternalName": "I-Ching-GL-Clean",
+    "AssemblyVersion": "1.0.0.2",
+    "Changelog": "v1.0.0.2: Added YMove (fly-through-walls) + DeepDungeon-specific mode. Fixed X close button in ConfigWindow.",
     "RepoUrl": "https://github.com/qimingzitaimafanle/qxv-notes",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 15,
