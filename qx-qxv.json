@@ -1,0 +1,14 @@
+{
+  "Author": "qx",
+  "Name": "qx-qxv",
+  "Punchline": "Personal notes app.",
+  "Description": "Personal notes app.",
+  "InternalName": "qx-qxv",
+  "AssemblyVersion": "1.0.0.0",
+  "RepoUrl": "https://github.com/qimingzitaimafanle/qxv-notes",
+  "ApplicableVersion": "any",
+  "DalamudApiLevel": 15,
+  "TestingDalamudApiLevel": 15,
+  "IsHide": "False",
+  "IsTestingExclusive": "False"
+}

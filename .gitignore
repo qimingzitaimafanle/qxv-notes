@@ -1,0 +1,35 @@
+## Source code (not tracked)
+*.cs
+*.csproj
+*.props
+*.targets
+Configuration.cs
+Plugin.cs
+HookManager.cs
+OnlineOpcode.cs
+Directory.Build.props
+I-Ching-GL-Clean.csproj
+
+## Folders
+bin/
+obj/
+Helpers/
+Hook/
+Structs/
+Utils/
+Windows/
+staging/
+
+## Build artifacts
+*.user
+*.suo
+*.pdb
+*.deps.json
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Plugin manifests (allowed, must be tracked)
+!pluginmaster.json
+!qx-qxv.json

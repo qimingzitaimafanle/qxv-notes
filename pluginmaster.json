@@ -1,0 +1,21 @@
+[
+  {
+    "Author": "qx",
+    "Name": "qx-qxv",
+    "Punchline": "Personal notes app.",
+    "Description": "Personal notes app.",
+    "InternalName": "qx-qxv",
+    "AssemblyVersion": "1.0.0.0",
+    "RepoUrl": "https://github.com/qimingzitaimafanle/qxv-notes",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 15,
+    "TestingDalamudApiLevel": 15,
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "DownloadCount": 0,
+    "LastUpdate": 0,
+    "DownloadLinkInstall": "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/qxnotes.zip",
+    "DownloadLinkUpdate": "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/qxnotes.zip",
+    "IconUrl": ""
+  }
+]
