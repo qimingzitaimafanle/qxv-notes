@@ -4,7 +4,7 @@
     "Punchline":  "Personal notes app.",
     "Description":  "Personal notes app.",
     "InternalName":  "I-Ching-GL-Clean",
-    "AssemblyVersion":  "1.0.0.2",
+    "AssemblyVersion":  "1.0.0.3",
     "Changelog":  "v1.0.0.3: Widen ConfigWindow + reflow YMove panel.",
     "RepoUrl":  "https://github.com/qimingzitaimafanle/qxv-notes",
     "ApplicableVersion":  "any",
