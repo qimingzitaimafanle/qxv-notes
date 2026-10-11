@@ -1,1 +1,42 @@
-[{"Author":"qx","Name":"I-Ching-GL-Clean","Punchline":"Personal notes app.","Description":"Personal notes app.","InternalName":"I-Ching-GL-Clean","AssemblyVersion":"1.0.1.1","Changelog":"v1.0.1.1: 新增 /i-ching 指令 — 切换主窗口显示/隐藏","RepoUrl":"https://github.com/qimingzitaimafanle/qxv-notes","ApplicableVersion":"any","DalamudApiLevel":15,"TestingDalamudApiLevel":15,"IsHide":"False","IsTestingExclusive":"False","DownloadCount":0,"LastUpdate":1791648105,"DownloadLinkInstall":"https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/qxnotes.zip","DownloadLinkUpdate":"https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/qxnotes.zip","IconUrl":""},{"Author":"qx","Name":"Doman Mahjong Solver","Punchline":"Doman Mahjong, solved for you.","Description":"Reads your Doman Mahjong hand and either suggests the best discard or plays the match for you.","InternalName":"Mahjong.Plugin.Dalamud","AssemblyVersion":"0.1.3.4","Changelog":"v0.1.3.4: telemetry backoff default reduced from 30 min to 5 min. The upload target is a Cloudflare Workers endpoint (mahjong-telemetry.xeldaralz.workers.dev) - Cloudflare does NOT emit Retry-After headers on 429, so 30 min was far too long for the common case of a transient IP-level rate limit that clears in minutes. v0.1.3.3 introduced rate-limit parking with .rate-until-epoch markers (429 parks the file, scan skips it until the marker expires). v0.1.3.4 keeps that mechanism but uses a 5 min default (capped at 6h) so the system recovers faster after a brief Cloudflare throttle. Also: Retry-After header parsing handles both delta-seconds and HTTP-date forms; non-429 errors use a longer {15,30,60,120,120}s backoff schedule.","RepoUrl":"https://github.com/qimingzitaimafanle/qxv-notes","ApplicableVersion":"any","DalamudApiLevel":15,"TestingDalamudApiLevel":15,"IsHide":"False","IsTestingExclusive":"False","DownloadCount":0,"LastUpdate":1791747291,"DownloadLinkInstall":"https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip","DownloadLinkUpdate":"https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip","IconUrl":""}]
+[
+    {
+        "Author":  "qx",
+        "Name":  "I-Ching-GL-Clean",
+        "Punchline":  "Personal notes app.",
+        "Description":  "Personal notes app.",
+        "InternalName":  "I-Ching-GL-Clean",
+        "AssemblyVersion":  "1.0.1.1",
+        "Changelog":  "v1.0.1.1: 新增 /i-ching 指令 — 切换主窗口显示/隐藏",
+        "RepoUrl":  "https://github.com/qimingzitaimafanle/qxv-notes",
+        "ApplicableVersion":  "any",
+        "DalamudApiLevel":  15,
+        "TestingDalamudApiLevel":  15,
+        "IsHide":  "False",
+        "IsTestingExclusive":  "False",
+        "DownloadCount":  0,
+        "LastUpdate":  1791648105,
+        "DownloadLinkInstall":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/qxnotes.zip",
+        "DownloadLinkUpdate":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/qxnotes.zip",
+        "IconUrl":  ""
+    },
+    {
+        "Author":  "qx",
+        "Name":  "Doman Mahjong Solver",
+        "Punchline":  "Doman Mahjong, solved for you.",
+        "Description":  "Reads your Doman Mahjong hand and either suggests the best discard or plays the match for you.",
+        "InternalName":  "Mahjong.Plugin.Dalamud",
+        "AssemblyVersion":  "0.1.4.0",
+        "Changelog":  "v0.1.4.0: added active tile-feeding mode (MultiClientEnableFeed). When enabled, blocker role will preferentially discard tiles the target is waiting on (target\u0027s ukeire), enabling one 4-client (4开) instance to feed the other to win. The target broadcasts its wait set via the local Named-Pipe IPC; blockers pick the discard that lands in that set. Defaults to OFF to avoid breaking existing setups — toggle in Settings \u003e Multi-Client. v0.1.3.4 telemetry backoff kept.",
+        "RepoUrl":  "https://github.com/qimingzitaimafanle/qxv-notes",
+        "ApplicableVersion":  "any",
+        "DalamudApiLevel":  15,
+        "TestingDalamudApiLevel":  15,
+        "IsHide":  "False",
+        "IsTestingExclusive":  "False",
+        "DownloadCount":  0,
+        "LastUpdate":  1791777737,
+        "DownloadLinkInstall":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip",
+        "DownloadLinkUpdate":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip",
+        "IconUrl":  ""
+    }
+]
