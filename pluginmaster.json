@@ -25,8 +25,8 @@
         "Punchline":  "Doman Mahjong, solved for you.",
         "Description":  "Reads your Doman Mahjong hand and either suggests the best discard or plays the match for you.",
         "InternalName":  "Mahjong.Plugin.Dalamud",
-        "AssemblyVersion":  "0.1.6.3",
-        "Changelog":  "v0.1.6.3: Fixes a regression introduced by v0.1.6.2. That release made DispatchCallOption infer the button to click from the option index (option 0 meaning \"Tsumo\") so the state-6 self-declare popup would no longer press a hand tile instead of the Tsumo button. The inference was wrong: a Riichi-confirm at option 0 was also routed to the label path, so it stopped dispatching and logged HookFailed every time - the bot declared riichi, then failed to confirm it, leaving the declaration popup open. Field log 2026-10-12 06:22 shows auto-riichi-confirm[opt=0] -\u003e HookFailed where v0.1.6.1 and earlier returned Ok. DispatchCallOption now takes the button label explicitly as a second parameter; only a self-declared tsumo passes \"Tsumo\", and every other action (Riichi-confirm, Pass, Pon, Chi, Kan, Ron) keeps its positional dispatch untouched. Unknown labels are rejected rather than guessed. The v0.1.6.2 self-declare fix itself is unchanged and still applies. Verified by build (0 errors/0 warnings) and 712 passing tests.",
+        "AssemblyVersion":  "0.1.6.4",
+        "Changelog":  "v0.1.6.4: Stops a telemetry upload storm and the log flood it caused. Field log 2026-10-12 05:36 showed 61 distinct hand files each attempted once inside a 13-second window while the server was answering 429 - 140 of the log\u0027s 160 lines were the resulting duplicate warnings. Two independent causes. (1) No circuit breaker: the per-file .rate-until-epoch marker only prevents a second attempt at the same file, and does nothing about the other files still queued ahead of it, so each 60s scan drained the entire backlog against a server already refusing us. TelemetryUploader now holds all uploads for the duration of the rate-limit pause, extends (never shortens) it, and closes it the moment an upload succeeds. The pause arithmetic lives in a new UploadRateLimiter so it is testable without HTTP or a real clock. (2) HttpTelemetryClient re-armed its 429 log latch on every success, so a mixed 200/429 run emitted one warning per file anyway; it now re-arms on a 10-minute cooldown instead, bounding the warning rate regardless of how the server mixes responses. Note the two log-throttles that already existed covered a different message shape, so the 05:36 flood predates them. Verified by build (0 errors/0 warnings) and the full test suite; both fixes are guarded by tests proven to fail when the fix is removed.",
         "RepoUrl":  "https://github.com/qimingzitaimafanle/qxv-notes",
         "ApplicableVersion":  "any",
         "DalamudApiLevel":  15,
@@ -34,10 +34,10 @@
         "IsHide":  "False",
         "IsTestingExclusive":  "False",
         "DownloadCount":  0,
-        "LastUpdate":  1791787405,
+        "LastUpdate":  1791788006,
         "DownloadLinkInstall":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip",
         "DownloadLinkUpdate":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip",
         "IconUrl":  "",
-        "TestingAssemblyVersion":  "0.1.6.3"
+        "TestingAssemblyVersion":  "0.1.6.4"
     }
 ]
