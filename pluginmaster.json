@@ -25,8 +25,8 @@
         "Punchline":  "Doman Mahjong, solved for you.",
         "Description":  "Reads your Doman Mahjong hand and either suggests the best discard or plays the match for you.",
         "InternalName":  "Mahjong.Plugin.Dalamud",
-        "AssemblyVersion":  "0.1.6.2",
-        "Changelog":  "v0.1.6.2: Fixes the bot pressing the wrong thing when it can actually win. Field log 2026-10-12 06:03 caught the bot holding a real win - 345m 77m 567p 123s 456s, a valid pinfu/tanyao self-draw - correctly flagging tsumoComplete=True, then dispatching \u0027opcode-15+7(slot=4)\u0027 and clicking the 7m instead of the Tsumo button, where it sat until the 10-second stuck guard fired and asked for a manual click. Root cause: on the state-6 self-declare popup the list rows are not call buttons in call order, they are the discardable tiles, so passing the caller\u0027s button index straight into SelectItem(0) clicks whatever tile occupies that row. Win detection itself was already correct in v0.1.6.1 and is unchanged. Self-declared Tsumo is now resolved by reading the row\u0027s own label (Tsumo / self-draw) instead of by index, and when the label cannot be found the dispatch is refused rather than guessed - a wrong click here either discards a tile out of a winning hand or lets the popup time out and forfeits the win. Pass, Pon, Chi, Kan, Ron and Riichi-confirm keep their existing positional behaviour. Verified by build (0 errors/0 warnings) and 712 passing tests.",
+        "AssemblyVersion":  "0.1.6.3",
+        "Changelog":  "v0.1.6.3: Fixes a regression introduced by v0.1.6.2. That release made DispatchCallOption infer the button to click from the option index (option 0 meaning \"Tsumo\") so the state-6 self-declare popup would no longer press a hand tile instead of the Tsumo button. The inference was wrong: a Riichi-confirm at option 0 was also routed to the label path, so it stopped dispatching and logged HookFailed every time - the bot declared riichi, then failed to confirm it, leaving the declaration popup open. Field log 2026-10-12 06:22 shows auto-riichi-confirm[opt=0] -\u003e HookFailed where v0.1.6.1 and earlier returned Ok. DispatchCallOption now takes the button label explicitly as a second parameter; only a self-declared tsumo passes \"Tsumo\", and every other action (Riichi-confirm, Pass, Pon, Chi, Kan, Ron) keeps its positional dispatch untouched. Unknown labels are rejected rather than guessed. The v0.1.6.2 self-declare fix itself is unchanged and still applies. Verified by build (0 errors/0 warnings) and 712 passing tests.",
         "RepoUrl":  "https://github.com/qimingzitaimafanle/qxv-notes",
         "ApplicableVersion":  "any",
         "DalamudApiLevel":  15,
@@ -34,10 +34,10 @@
         "IsHide":  "False",
         "IsTestingExclusive":  "False",
         "DownloadCount":  0,
-        "LastUpdate":  1791785404,
+        "LastUpdate":  1791787226,
         "DownloadLinkInstall":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip",
         "DownloadLinkUpdate":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip",
         "IconUrl":  "",
-        "TestingAssemblyVersion":  "0.1.6.2"
+        "TestingAssemblyVersion":  "0.1.6.3"
     }
 ]
