@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "Author":  "qx",
         "Name":  "I-Ching-GL-Clean",
@@ -25,8 +25,8 @@
         "Punchline":  "Doman Mahjong, solved for you.",
         "Description":  "Reads your Doman Mahjong hand and either suggests the best discard or plays the match for you.",
         "InternalName":  "Mahjong.Plugin.Dalamud",
-        "AssemblyVersion":  "0.1.6.0",
-        "Changelog":  "v0.1.6.0: 修复『自己把刚摸到的牌打掉、永远不胡』。根因在策略层之上,不是策略层本身:state 6 (SelfDeclareList) 手牌 14 张时,两条 call-prompt 标签扫描都只遍历 call-modal 节点树,但游戏把『自摸』按钮渲染在独立的 SelfDeclare/Agari 部件里,两条扫描永远看不到它,于是 ActionFlags.Tsumo 在结构上不可能被置上,刚摸到的第 14 张牌被当成普通弃牌候选打分弃掉——自己牌河里因此留着自己等的那张牌(振听),手牌再也自摸不能。现在 Tsumo flag 改为纯牌面算术推导(标准型/七对子/国士无双),不再依赖 UI 文本,任何客户端语言、翻译补丁、节点树变动都不再影响。荣和同理。新增每次观察一行 SelfDeclare 诊断日志(hand/drawn/tsumoComplete/decided/flags),以后漏胡可以直接从插件日志定位。同时修掉日志刷屏:telemetry 上传扫描没有跳过自己的 .rate-until-epoch 标记文件,每次 429 都会给标记再叠一层后缀(x.ndjson.rate-until-epoch.rate-until-epoch…),每个文件每 60 秒刷两行且永不停;现在扫描与待传计数都会过滤标记文件,429 警告降为每文件只报一次。MultiClientRole = Blocker 仍然按设计不吃和。",
+        "AssemblyVersion":  "0.1.6.1",
+        "Changelog":  "v0.1.6.1: 修复 v0.1.6.0 中【修复代码不可达】的缺陷。上一版的自摸判定与其 SelfDeclare 诊断日志被放在了 (isCallPromptState \u0026\u0026 callModalVisible) 分支内，但 state 6 自摸弹窗并不渲染 call-modal 外壳，实机下整个分支被跳过：IsTsumoComplete 从未执行、诊断行从未输出，手牌一路跌落到通用的 hand % 3 == 2 兜底规则，只拿到裸的 ActionFlags.Discard —— bot 依旧把刚摸到的牌当弃牌打出，污染自己的河并永远无法自摸，正是 v0.1.6.0 声称已修复的那个问题。现将自摸判定前移到 call-modal 检查之前，使其不再依赖 callModalVisible；Discard 仍然始终提供（该弹窗同时是弃牌界面），仅当 14 张牌确实构成和牌型时才加入 Tsumo。同时彻底收敛遥测日志刷屏：HttpTelemetryClient 此前对每个 429 无节流地各打一条 Warning，积压队列每轮可产生数百行；现已改为进程级只报一次、并在下次成功上传时自动复位，TelemetryUploader 则只详述首个被停放的文件再加一行汇总，之后保持静默。另修复 latest.zip 重复打包 Icon.png（约 330 KB）的问题：bundle_icon.ps1 只删除正斜杠条目名，未处理打包器产生的反斜杠变体。已通过编译（0 错误 0 警告）与 712 项测试；实机请以 SelfDeclare 诊断行作为验证依据。",
         "RepoUrl":  "https://github.com/qimingzitaimafanle/qxv-notes",
         "ApplicableVersion":  "any",
         "DalamudApiLevel":  15,
@@ -34,9 +34,10 @@
         "IsHide":  "False",
         "IsTestingExclusive":  "False",
         "DownloadCount":  0,
-        "LastUpdate":  1791754059,
+        "LastUpdate":  1791784021,
         "DownloadLinkInstall":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip",
         "DownloadLinkUpdate":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/mahjong-latest.zip",
-        "IconUrl":  ""
+        "IconUrl":  "",
+        "TestingAssemblyVersion":  "0.1.6.1"
     }
 ]
