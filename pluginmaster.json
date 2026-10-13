@@ -5,8 +5,8 @@
         "Punchline":  "Personal notes app.",
         "Description":  "Personal notes app.",
         "InternalName":  "I-Ching-GL-Clean",
-        "AssemblyVersion":  "1.0.1.1",
-        "Changelog":  "v1.0.1.1: ���� /i-ching ָ�� �� �л���������ʾ/����",
+        "AssemblyVersion":  "1.0.2.0",
+        "Changelog":  "v1.0.2.0: \u89e3\u9664 motp \u5728\u6218\u6597/\u6b7b\u5bab\u7684\u9650\u5236\uff1b\u6539 zip \u540d\u4e3a I-Ching-GL-Clean.zip",
         "RepoUrl":  "https://github.com/qimingzitaimafanle/qxv-notes",
         "ApplicableVersion":  "any",
         "DalamudApiLevel":  15,
@@ -15,8 +15,8 @@
         "IsTestingExclusive":  "False",
         "DownloadCount":  0,
         "LastUpdate":  1791648105,
-        "DownloadLinkInstall":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/qxnotes.zip",
-        "DownloadLinkUpdate":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/qxnotes.zip",
+        "DownloadLinkInstall":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/I-Ching-GL-Clean.zip",
+        "DownloadLinkUpdate":  "https://raw.githubusercontent.com/qimingzitaimafanle/qxv-notes/main/I-Ching-GL-Clean.zip",
         "IconUrl":  ""
     },
     {
